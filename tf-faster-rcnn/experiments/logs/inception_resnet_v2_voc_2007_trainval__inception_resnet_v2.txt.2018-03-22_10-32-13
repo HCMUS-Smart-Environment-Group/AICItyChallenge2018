@@ -1,0 +1,1108 @@
++ echo Logging output to experiments/logs/inception_resnet_v2_voc_2007_trainval__inception_resnet_v2.txt.2018-03-22_10-32-13
+Logging output to experiments/logs/inception_resnet_v2_voc_2007_trainval__inception_resnet_v2.txt.2018-03-22_10-32-13
++ set +x
++ '[' '!' -f output/inception_resnet_v2/voc_2007_trainval/default/inception_resnet_v2_faster_rcnn_iter_700.ckpt.index ']'
++ [[ ! -z '' ]]
++ CUDA_VISIBLE_DEVICES=0
++ time python ./tools/trainval_net.py --weight data/imagenet_weights/inception_resnet_v2.ckpt --imdb voc_2007_trainval --imdbval voc_2007_test --iters 700 --cfg experiments/cfgs/inception_resnet_v2.yml --net inception_resnet_v2 --set ANCHOR_SCALES '[8,16,32]' ANCHOR_RATIOS '[0.5,1,2]' TRAIN.STEPSIZE '[500]'
+Called with args:
+Namespace(cfg_file='experiments/cfgs/inception_resnet_v2.yml', imdb_name='voc_2007_trainval', imdbval_name='voc_2007_test', max_iters=700, net='inception_resnet_v2', set_cfgs=['ANCHOR_SCALES', '[8,16,32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'TRAIN.STEPSIZE', '[500]'], tag=None, weight='data/imagenet_weights/inception_resnet_v2.ckpt')
+Using config:
+{'ANCHOR_RATIOS': [0.5, 1, 2],
+ 'ANCHOR_SCALES': [8, 16, 32],
+ 'DATA_DIR': '/media/ad/DATA/aicitychallenge/tf-faster-rcnn/data',
+ 'EXP_DIR': 'inception_resnet_v2',
+ 'MATLAB': 'matlab',
+ 'MOBILENET': {'DEPTH_MULTIPLIER': 1.0,
+               'FIXED_LAYERS': 5,
+               'REGU_DEPTH': False,
+               'WEIGHT_DECAY': 4e-05},
+ 'PIXEL_MEANS': array([[[102.9801, 115.9465, 122.7717]]]),
+ 'POOLING_MODE': 'crop',
+ 'POOLING_SIZE': 7,
+ 'RESNET': {'FIXED_BLOCKS': 1, 'MAX_POOL': False},
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/media/ad/DATA/aicitychallenge/tf-faster-rcnn',
+ 'RPN_CHANNELS': 512,
+ 'TEST': {'BBOX_REG': True,
+          'HAS_RPN': True,
+          'MAX_SIZE': 1000,
+          'MODE': 'nms',
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'gt',
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'RPN_TOP_N': 5000,
+          'SCALES': [600],
+          'SVM': False},
+ 'TRAIN': {'ASPECT_GROUPING': False,
+           'BATCH_SIZE': 128,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': True,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.5,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'BIAS_DECAY': False,
+           'DISPLAY': 20,
+           'DOUBLE_BIAS': True,
+           'FG_FRACTION': 0.25,
+           'FG_THRESH': 0.5,
+           'GAMMA': 0.1,
+           'HAS_RPN': True,
+           'IMS_PER_BATCH': 1,
+           'LEARNING_RATE': 0.001,
+           'MAX_SIZE': 1000,
+           'MOMENTUM': 0.9,
+           'PROPOSAL_METHOD': 'gt',
+           'RPN_BATCHSIZE': 256,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 2000,
+           'RPN_PRE_NMS_TOP_N': 12000,
+           'SCALES': [600],
+           'SNAPSHOT_ITERS': 5000,
+           'SNAPSHOT_KEPT': 3,
+           'SNAPSHOT_PREFIX': 'inception_resnet_v2_faster_rcnn',
+           'STEPSIZE': [500],
+           'SUMMARY_INTERVAL': 180,
+           'TRUNCATED': False,
+           'USE_ALL_GT': True,
+           'USE_FLIPPED': True,
+           'USE_GT': False,
+           'WEIGHT_DECAY': 0.0001},
+ 'USE_GPU_NMS': True}
+Loaded dataset `voc_2007_trainval` for training
+Set proposal method: gt
+Appending horizontally-flipped training examples...
+voc_2007_trainval gt roidb loaded from /media/ad/DATA/aicitychallenge/tf-faster-rcnn/data/cache/voc_2007_trainval_gt_roidb.pkl
+done
+Preparing training data...
+done
+10022 roidb entries
+Output will be saved to `/media/ad/DATA/aicitychallenge/tf-faster-rcnn/output/inception_resnet_v2/voc_2007_trainval/default`
+TensorFlow summaries will be saved to `/media/ad/DATA/aicitychallenge/tf-faster-rcnn/tensorboard/inception_resnet_v2/voc_2007_trainval/default`
+Loaded dataset `voc_2007_test` for training
+Set proposal method: gt
+Preparing training data...
+voc_2007_test gt roidb loaded from /media/ad/DATA/aicitychallenge/tf-faster-rcnn/data/cache/voc_2007_test_gt_roidb.pkl
+done
+4952 validation roidb entries
+Filtered 0 roidb entries: 10022 -> 10022
+Filtered 0 roidb entries: 4952 -> 4952
+2018-03-22 10:32:20.050335: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2018-03-22 10:32:20.173857: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:898] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2018-03-22 10:32:20.174088: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1212] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.6575
+pciBusID: 0000:01:00.0
+totalMemory: 10.91GiB freeMemory: 10.42GiB
+2018-03-22 10:32:20.174099: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1312] Adding visible gpu devices: 0
+2018-03-22 10:32:20.322288: I tensorflow/core/common_runtime/gpu/gpu_device.cc:993] Creating TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10086 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:01:00.0, compute capability: 6.1)
+Solving...
+/home/ad/tensorflow-r1.6/local/lib/python2.7/site-packages/tensorflow/python/ops/gradients_impl.py:98: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+Loading initial model weights from data/imagenet_weights/inception_resnet_v2.ckpt
+InceptionResnetV2/Repeat_1/block17_18/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_12/Branch_1/Conv2d_0b_1x7/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_8/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_10/Branch_2/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_14/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_3/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_2/block8_3/Branch_1/Conv2d_0b_1x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_2/Branch_1/Conv2d_0b_3x3/weights
+InceptionResnetV2/Repeat/block35_3/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_6/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_7/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_17/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_4/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_16/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_10/Branch_2/Conv2d_0b_3x3/weights
+InceptionResnetV2/Repeat_1/block17_14/Branch_1/Conv2d_0b_1x7/weights
+InceptionResnetV2/Repeat_1/block17_1/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_1/Branch_1/Conv2d_0b_1x7/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_3/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_19/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_9/Branch_1/Conv2d_0b_1x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_10/Branch_2/Conv2d_0c_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Mixed_5b/Branch_2/Conv2d_0b_3x3/weights
+InceptionResnetV2/Repeat/block35_1/Branch_2/Conv2d_0c_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_9/Branch_1/Conv2d_0b_1x3/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_5/Branch_1/Conv2d_0b_1x3/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_8/Branch_2/Conv2d_0c_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_4/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_2/Branch_1/Conv2d_0b_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Mixed_6a/Branch_1/Conv2d_1a_3x3/weights
+InceptionResnetV2/Block8/Branch_1/Conv2d_0b_1x3/weights
+InceptionResnetV2/Repeat/block35_10/Branch_2/Conv2d_0c_3x3/weights
+InceptionResnetV2/Repeat_2/block8_3/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_20/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_7/Branch_1/Conv2d_0c_3x1/weights
+InceptionResnetV2/Repeat_1/block17_10/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_1/block17_9/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_7/Branch_1/Conv2d_0c_3x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_4/Branch_1/Conv2d_0b_1x7/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_5/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Mixed_7a/Branch_0/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_1/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_4/Branch_1/Conv2d_0b_1x3/weights
+InceptionResnetV2/Repeat/block35_9/Branch_2/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_3/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_16/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_4/Conv2d_1x1/biases
+InceptionResnetV2/Repeat_1/block17_12/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_9/Branch_2/Conv2d_0b_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_10/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Mixed_5b/Branch_3/Conv2d_0b_1x1/BatchNorm/beta
+InceptionResnetV2/Mixed_7a/Branch_0/Conv2d_1a_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_15/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat/block35_7/Branch_2/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat/block35_9/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_7/Branch_1/Conv2d_0c_7x1/weights
+InceptionResnetV2/Repeat/block35_1/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Mixed_5b/Branch_3/Conv2d_0b_1x1/weights
+InceptionResnetV2/Repeat/block35_3/Branch_2/Conv2d_0b_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_8/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_7/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_1/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Mixed_7a/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_8/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_9/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/AuxLogits/Conv2d_2a_5x5/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_1/Branch_1/Conv2d_0b_1x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_1/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_9/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Mixed_5b/Branch_2/Conv2d_0c_3x3/BatchNorm/beta
+InceptionResnetV2/Conv2d_4a_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_8/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/AuxLogits/Logits/biases
+InceptionResnetV2/Repeat_1/block17_4/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_9/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_2/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_9/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_3/Branch_1/Conv2d_0c_3x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_16/Branch_1/Conv2d_0c_7x1/weights
+InceptionResnetV2/Repeat/block35_5/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_11/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_15/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_1/Conv2d_1x1/weights
+InceptionResnetV2/Repeat/block35_7/Branch_1/Conv2d_0b_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_5/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_14/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_8/Conv2d_1x1/biases
+InceptionResnetV2/Repeat/block35_3/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Mixed_6a/Branch_1/Conv2d_0b_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_7/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Block8/Branch_1/Conv2d_0b_1x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_3/Branch_2/Conv2d_0c_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_4/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_19/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_8/Branch_1/Conv2d_0b_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_9/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat/block35_1/Branch_1/Conv2d_0b_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_9/Branch_1/Conv2d_0c_3x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_10/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat/block35_4/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_1/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_12/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_18/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat/block35_4/Branch_2/Conv2d_0c_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_4/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_10/Branch_1/Conv2d_0b_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_2/Branch_2/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_4/Branch_1/Conv2d_0b_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_10/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_2/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_2/block8_8/Conv2d_1x1/biases
+InceptionResnetV2/Mixed_7a/Branch_0/Conv2d_1a_3x3/weights
+InceptionResnetV2/Mixed_7a/Branch_2/Conv2d_1a_3x3/weights
+InceptionResnetV2/Mixed_6a/Branch_0/Conv2d_1a_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_10/Branch_2/Conv2d_0c_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_9/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_9/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_16/Branch_1/Conv2d_0b_1x7/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_7/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat/block35_10/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_1/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat/block35_6/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_12/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Mixed_7a/Branch_2/Conv2d_1a_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_10/Conv2d_1x1/biases
+InceptionResnetV2/Conv2d_4a_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_17/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_1/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_2/block8_9/Branch_1/Conv2d_0c_3x1/BatchNorm/moving_variance
+InceptionResnetV2/Mixed_7a/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_7/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_2/block8_6/Conv2d_1x1/biases
+InceptionResnetV2/Block8/Conv2d_1x1/biases
+InceptionResnetV2/Repeat_1/block17_2/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Mixed_6a/Branch_0/Conv2d_1a_3x3/weights
+InceptionResnetV2/Repeat_1/block17_1/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_1/block17_10/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_mean
+InceptionResnetV2/Mixed_5b/Branch_1/Conv2d_0b_5x5/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_5/Branch_1/Conv2d_0c_3x1/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_7/Branch_1/Conv2d_0c_3x1/BatchNorm/moving_mean
+InceptionResnetV2/Block8/Conv2d_1x1/weights
+InceptionResnetV2/Mixed_7a/Branch_2/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_2/block8_8/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_4/Conv2d_1x1/weights
+InceptionResnetV2/Mixed_5b/Branch_2/Conv2d_0c_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_7/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_8/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_5/Branch_1/Conv2d_0b_1x3/weights
+InceptionResnetV2/Repeat_2/block8_3/Branch_1/Conv2d_0b_1x3/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_8/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat/block35_2/Branch_1/Conv2d_0b_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_13/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_12/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_5/Conv2d_1x1/weights
+InceptionResnetV2/Repeat/block35_8/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_8/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_19/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_5/Branch_2/Conv2d_0c_3x3/weights
+InceptionResnetV2/Repeat_1/block17_1/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_mean
+InceptionResnetV2/AuxLogits/Conv2d_1b_1x1/weights
+InceptionResnetV2/Repeat_2/block8_2/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_2/block8_9/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_17/Conv2d_1x1/weights
+InceptionResnetV2/Repeat/block35_1/Branch_2/Conv2d_0c_3x3/BatchNorm/beta
+InceptionResnetV2/Mixed_5b/Branch_2/Conv2d_0b_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_6/Branch_2/Conv2d_0b_3x3/weights
+InceptionResnetV2/Repeat_1/block17_11/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_20/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/AuxLogits/Logits/weights
+InceptionResnetV2/Repeat/block35_6/Branch_2/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_11/Branch_1/Conv2d_0b_1x7/weights
+InceptionResnetV2/Repeat_1/block17_8/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_6/Branch_2/Conv2d_0c_3x3/weights
+InceptionResnetV2/Repeat_2/block8_9/Branch_1/Conv2d_0b_1x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_6/Conv2d_1x1/biases
+InceptionResnetV2/Repeat/block35_5/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_12/Branch_1/Conv2d_0c_7x1/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_5/Conv2d_1x1/biases
+InceptionResnetV2/Repeat_1/block17_11/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_2/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_3/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_14/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_6/Branch_1/Conv2d_0b_1x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_18/Conv2d_1x1/biases
+InceptionResnetV2/Repeat_1/block17_14/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_13/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_7/Branch_1/Conv2d_0c_3x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_3/Branch_1/Conv2d_0c_7x1/weights
+InceptionResnetV2/Repeat_1/block17_12/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_5/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Conv2d_1a_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_3/Branch_1/Conv2d_0c_7x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_5/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_2/block8_1/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_9/Branch_2/Conv2d_0c_3x3/weights
+InceptionResnetV2/Repeat_1/block17_15/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_3/Branch_1/Conv2d_0b_1x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_10/Branch_1/Conv2d_0c_7x1/weights
+InceptionResnetV2/Mixed_5b/Branch_2/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_8/Branch_2/Conv2d_0b_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_10/Branch_2/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_9/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_5/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_11/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_1/block17_15/Branch_1/Conv2d_0b_1x7/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_5/Branch_1/Conv2d_0b_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_4/Branch_2/Conv2d_0c_3x3/weights
+InceptionResnetV2/Repeat/block35_3/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_9/Branch_1/Conv2d_0b_3x3/weights
+InceptionResnetV2/Repeat/block35_7/Branch_2/Conv2d_0c_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Conv2d_7b_1x1/weights
+InceptionResnetV2/Repeat_1/block17_13/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_1/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_14/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_2/block8_2/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_8/Branch_1/Conv2d_0b_1x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_3/Branch_1/Conv2d_0b_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_7/Branch_2/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_14/Branch_1/Conv2d_0b_1x7/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_2/Branch_1/Conv2d_0c_3x1/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_4/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Mixed_7a/Branch_0/Conv2d_1a_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_16/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_1/Branch_1/Conv2d_0c_7x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_3/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_4/Branch_1/Conv2d_0c_3x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_9/Branch_2/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_2/block8_1/Branch_1/Conv2d_0c_3x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_19/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_19/Conv2d_1x1/biases
+InceptionResnetV2/Repeat/block35_8/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_4/Branch_1/Conv2d_0c_3x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_4/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_12/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Mixed_7a/Branch_2/Conv2d_0b_3x3/BatchNorm/beta
+InceptionResnetV2/Conv2d_7b_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_2/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_5/Branch_2/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_6/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_2/block8_4/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_5/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_8/Branch_1/Conv2d_0b_1x3/weights
+InceptionResnetV2/Mixed_7a/Branch_2/Conv2d_0b_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Mixed_7a/Branch_0/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_2/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_14/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_11/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_3/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_2/block8_5/Branch_1/Conv2d_0c_3x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_1/Branch_2/Conv2d_0b_3x3/weights
+InceptionResnetV2/Repeat/block35_6/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_4/Branch_2/Conv2d_0b_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_10/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_2/Branch_1/Conv2d_0b_1x7/weights
+InceptionResnetV2/Repeat_1/block17_13/Branch_1/Conv2d_0b_1x7/weights
+InceptionResnetV2/Repeat_1/block17_19/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat/block35_1/Branch_1/Conv2d_0b_3x3/weights
+InceptionResnetV2/Repeat_1/block17_6/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Mixed_7a/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat/block35_10/Branch_2/Conv2d_0b_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_9/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_1/block17_5/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_3/Branch_1/Conv2d_0c_3x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_19/Branch_1/Conv2d_0b_1x7/weights
+InceptionResnetV2/Conv2d_4a_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_5/Branch_1/Conv2d_0c_7x1/weights
+InceptionResnetV2/Repeat_1/block17_18/Branch_1/Conv2d_0c_7x1/weights
+InceptionResnetV2/Repeat/block35_6/Branch_1/Conv2d_0b_3x3/weights
+InceptionResnetV2/Repeat/block35_2/Branch_2/Conv2d_0b_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_7/Branch_1/Conv2d_0b_1x7/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_18/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_13/Branch_1/Conv2d_0c_7x1/BatchNorm/beta
+InceptionResnetV2/Mixed_6a/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Mixed_5b/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_2/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_5/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_1/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_9/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_6/Branch_1/Conv2d_0b_1x3/weights
+InceptionResnetV2/AuxLogits/Conv2d_2a_5x5/weights
+InceptionResnetV2/Repeat_1/block17_8/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_4/Conv2d_1x1/weights
+InceptionResnetV2/Repeat/block35_6/Branch_2/Conv2d_0c_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_7/Branch_2/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_11/Conv2d_1x1/biases
+InceptionResnetV2/Repeat_2/block8_6/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_14/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_7/Branch_2/Conv2d_0b_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_1/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_1/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_14/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_8/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_5/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_7/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_19/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_7/Branch_1/Conv2d_0b_1x7/weights
+InceptionResnetV2/Repeat_2/block8_2/Branch_1/Conv2d_0c_3x1/BatchNorm/moving_variance
+InceptionResnetV2/Mixed_5b/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/AuxLogits/Conv2d_1b_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_8/Branch_1/Conv2d_0c_7x1/weights
+InceptionResnetV2/Repeat/block35_3/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Block8/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_4/Branch_2/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_17/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat/block35_5/Branch_1/Conv2d_0b_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_4/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_2/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_20/Conv2d_1x1/biases
+InceptionResnetV2/Repeat/block35_2/Branch_1/Conv2d_0b_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_3/Branch_1/Conv2d_0c_3x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_14/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_4/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_4/Branch_1/Conv2d_0b_1x7/weights
+InceptionResnetV2/Repeat_2/block8_9/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_4/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_2/block8_3/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_2/block8_8/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_17/Branch_1/Conv2d_0c_7x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_3/Branch_2/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_5/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_4/Conv2d_1x1/biases
+InceptionResnetV2/Repeat_1/block17_9/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_2/block8_4/Branch_1/Conv2d_0b_1x3/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_1/Branch_2/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_12/Branch_1/Conv2d_0c_7x1/weights
+InceptionResnetV2/Repeat_1/block17_5/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_8/Branch_1/Conv2d_0b_3x3/weights
+InceptionResnetV2/Repeat_2/block8_6/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat/block35_10/Branch_2/Conv2d_0b_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_7/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat/block35_3/Branch_1/Conv2d_0b_3x3/weights
+InceptionResnetV2/Repeat_1/block17_15/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_10/Conv2d_1x1/weights
+InceptionResnetV2/Repeat/block35_5/Branch_2/Conv2d_0b_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_7/Branch_1/Conv2d_0b_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_19/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_5/Branch_1/Conv2d_0b_1x7/weights
+InceptionResnetV2/Repeat_1/block17_2/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_19/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_mean
+InceptionResnetV2/Mixed_5b/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat/block35_8/Branch_1/Conv2d_0b_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_9/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_4/Branch_1/Conv2d_0b_3x3/weights
+InceptionResnetV2/Repeat_1/block17_15/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Mixed_6a/Branch_1/Conv2d_1a_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_10/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_1/block17_16/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_8/Conv2d_1x1/biases
+InceptionResnetV2/Conv2d_2b_3x3/weights
+InceptionResnetV2/Repeat_1/block17_20/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_13/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_6/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Mixed_5b/Branch_3/Conv2d_0b_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_2/Branch_2/Conv2d_0b_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_5/Branch_2/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Conv2d_3b_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_1/Branch_1/Conv2d_0b_1x7/weights
+InceptionResnetV2/Repeat_2/block8_8/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_3/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Mixed_5b/Branch_1/Conv2d_0b_5x5/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_8/Branch_1/Conv2d_0b_1x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_8/Branch_1/Conv2d_0c_3x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_7/Branch_2/Conv2d_0c_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_3/Branch_2/Conv2d_0b_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Logits/Logits/biases
+InceptionResnetV2/Repeat/block35_7/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Logits/Logits/weights
+InceptionResnetV2/Repeat_1/block17_9/Conv2d_1x1/biases
+InceptionResnetV2/Repeat/block35_1/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_3/Branch_2/Conv2d_0b_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_7/Branch_2/Conv2d_0b_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_7/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_5/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_4/Branch_1/Conv2d_0b_1x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_2/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_6/Branch_2/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_1/block17_15/Branch_1/Conv2d_0b_1x7/weights
+InceptionResnetV2/Repeat_1/block17_20/Branch_1/Conv2d_0b_1x7/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_20/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_7/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_15/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_5/Branch_1/Conv2d_0b_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_6/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_18/Branch_1/Conv2d_0b_1x7/weights
+InceptionResnetV2/Repeat/block35_10/Conv2d_1x1/biases
+InceptionResnetV2/Repeat_1/block17_19/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_2/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_15/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Mixed_7a/Branch_1/Conv2d_1a_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_5/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_3/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_3/Branch_2/Conv2d_0a_1x1/weights
+InceptionResnetV2/Mixed_6a/Branch_1/Conv2d_0b_3x3/weights
+InceptionResnetV2/Repeat_1/block17_20/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_1/Conv2d_1x1/biases
+InceptionResnetV2/Repeat_1/block17_3/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_2/Branch_1/Conv2d_0b_1x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_9/Branch_1/Conv2d_0b_1x7/weights
+InceptionResnetV2/Repeat_2/block8_8/Branch_1/Conv2d_0c_3x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_5/Branch_2/Conv2d_0b_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_8/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_5/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_4/Branch_1/Conv2d_0c_7x1/weights
+InceptionResnetV2/Repeat_1/block17_16/Branch_1/Conv2d_0b_1x7/weights
+InceptionResnetV2/Repeat_1/block17_12/Conv2d_1x1/biases
+InceptionResnetV2/Repeat/block35_9/Branch_2/Conv2d_0c_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_6/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_4/Branch_2/Conv2d_0b_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_9/Branch_1/Conv2d_0c_3x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_19/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_9/Branch_1/Conv2d_0b_1x3/weights
+InceptionResnetV2/Mixed_7a/Branch_2/Conv2d_1a_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_20/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Conv2d_7b_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_20/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_2/Branch_2/Conv2d_0c_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Conv2d_2a_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_17/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_4/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_5/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_15/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_3/Branch_2/Conv2d_0c_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_18/Conv2d_1x1/weights
+InceptionResnetV2/Repeat/block35_5/Branch_2/Conv2d_0b_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Mixed_6a/Branch_0/Conv2d_1a_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Mixed_5b/Branch_2/Conv2d_0c_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Conv2d_3b_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_1/Branch_2/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Mixed_7a/Branch_1/Conv2d_1a_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_8/Branch_2/Conv2d_0b_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_3/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_19/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_2/block8_2/Branch_1/Conv2d_0c_3x1/weights
+InceptionResnetV2/Repeat_1/block17_2/Branch_1/Conv2d_0c_7x1/weights
+InceptionResnetV2/Repeat/block35_4/Branch_1/Conv2d_0b_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Mixed_7a/Branch_0/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_2/block8_5/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_3/Branch_1/Conv2d_0b_1x7/weights
+InceptionResnetV2/Repeat_1/block17_4/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat/block35_6/Branch_1/Conv2d_0b_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_18/Branch_1/Conv2d_0c_7x1/BatchNorm/beta
+InceptionResnetV2/Mixed_7a/Branch_2/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_2/Branch_1/Conv2d_0b_1x7/BatchNorm/beta
+InceptionResnetV2/AuxLogits/Conv2d_1b_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_1/Branch_1/Conv2d_0c_3x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_6/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_8/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_6/Branch_1/Conv2d_0b_1x3/BatchNorm/beta
+InceptionResnetV2/Mixed_5b/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Conv2d_2a_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_19/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_6/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_1/block17_10/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_2/Branch_2/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_2/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_6/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_13/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_11/Branch_1/Conv2d_0c_7x1/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_1/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_7/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_14/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_7/Branch_2/Conv2d_0c_3x3/weights
+InceptionResnetV2/Repeat/block35_9/Branch_2/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_9/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_4/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_13/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_6/Branch_1/Conv2d_0b_1x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_6/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Block8/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat/block35_8/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_12/Branch_1/Conv2d_0b_1x7/weights
+InceptionResnetV2/Mixed_7a/Branch_2/Conv2d_0b_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_7/Branch_2/Conv2d_0c_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_1/Branch_1/Conv2d_0c_3x1/weights
+InceptionResnetV2/Repeat_1/block17_15/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_1/block17_16/Conv2d_1x1/weights
+InceptionResnetV2/Repeat/block35_6/Conv2d_1x1/biases
+InceptionResnetV2/Repeat_1/block17_10/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_17/Branch_1/Conv2d_0c_7x1/weights
+InceptionResnetV2/Repeat_1/block17_17/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_3/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_11/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_1/Branch_2/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat/block35_6/Branch_2/Conv2d_0c_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_6/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_20/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_2/Branch_2/Conv2d_0b_3x3/weights
+InceptionResnetV2/Repeat_1/block17_20/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_1/block17_16/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_17/Branch_1/Conv2d_0b_1x7/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_6/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_16/Branch_1/Conv2d_0c_7x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_18/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_2/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_2/block8_8/Branch_1/Conv2d_0b_1x3/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_4/Branch_2/Conv2d_0b_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_8/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_13/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_2/block8_2/Branch_1/Conv2d_0b_1x3/weights
+InceptionResnetV2/Repeat_2/block8_6/Branch_1/Conv2d_0c_3x1/weights
+InceptionResnetV2/Repeat_1/block17_14/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_18/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_7/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Mixed_6a/Branch_1/Conv2d_1a_3x3/BatchNorm/beta
+InceptionResnetV2/Mixed_7a/Branch_1/Conv2d_1a_3x3/weights
+InceptionResnetV2/Repeat_1/block17_12/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_18/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_1/Branch_1/Conv2d_0b_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_2/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_14/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_6/Branch_2/Conv2d_0c_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_8/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_6/Branch_2/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_10/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Conv2d_2a_3x3/weights
+InceptionResnetV2/Repeat_1/block17_1/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_7/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_11/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_4/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_2/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_1/block17_7/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_2/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_9/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_15/Branch_1/Conv2d_0c_7x1/weights
+InceptionResnetV2/Repeat_1/block17_11/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_3/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_1/block17_2/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_3/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_10/Branch_2/Conv2d_0b_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_6/Branch_1/Conv2d_0c_3x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_12/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_8/Branch_2/Conv2d_0a_1x1/weights
+InceptionResnetV2/Mixed_5b/Branch_2/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_1/block17_4/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_20/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_9/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_3/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_1/block17_13/Branch_1/Conv2d_0b_1x7/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_4/Branch_1/Conv2d_0c_3x1/weights
+InceptionResnetV2/Mixed_7a/Branch_1/Conv2d_1a_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_11/Branch_1/Conv2d_0b_1x7/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_3/Branch_1/Conv2d_0b_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_5/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_10/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_5/Conv2d_1x1/biases
+InceptionResnetV2/Repeat/block35_8/Branch_2/Conv2d_0c_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_3/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_4/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_8/Branch_1/Conv2d_0b_1x7/weights
+InceptionResnetV2/Repeat_2/block8_9/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_10/Branch_1/Conv2d_0b_1x7/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_8/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_1/block17_11/Branch_1/Conv2d_0c_7x1/weights
+InceptionResnetV2/Repeat_2/block8_6/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_9/Branch_1/Conv2d_0c_7x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_1/Conv2d_1x1/biases
+InceptionResnetV2/Repeat_1/block17_17/Conv2d_1x1/biases
+InceptionResnetV2/Repeat_1/block17_6/Branch_1/Conv2d_0b_1x7/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_2/Branch_1/Conv2d_0c_3x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_4/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_9/Conv2d_1x1/biases
+InceptionResnetV2/Repeat_1/block17_3/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_9/Branch_2/Conv2d_0c_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_5/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Block8/Branch_1/Conv2d_0c_3x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_2/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_18/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_5/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_6/Branch_1/Conv2d_0b_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_1/Branch_1/Conv2d_0c_7x1/weights
+InceptionResnetV2/Repeat_1/block17_12/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_15/Conv2d_1x1/biases
+InceptionResnetV2/Repeat_2/block8_4/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat/block35_8/Conv2d_1x1/weights
+InceptionResnetV2/Repeat/block35_9/Branch_2/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_1/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_7/Branch_1/Conv2d_0b_1x3/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_4/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_mean
+InceptionResnetV2/Conv2d_1a_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_8/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_8/Branch_1/Conv2d_0b_1x7/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_5/Branch_2/Conv2d_0c_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_7/Branch_2/Conv2d_0b_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_5/Branch_1/Conv2d_0c_7x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_14/Branch_1/Conv2d_0c_7x1/weights
+InceptionResnetV2/Repeat_1/block17_9/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_5/Branch_2/Conv2d_0c_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_6/Branch_2/Conv2d_0b_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_2/Branch_2/Conv2d_0c_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_3/Branch_2/Conv2d_0c_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_11/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_20/Branch_1/Conv2d_0b_1x7/weights
+InceptionResnetV2/Repeat_1/block17_7/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_1/Branch_1/Conv2d_0b_1x3/weights
+InceptionResnetV2/Repeat/block35_5/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_17/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_7/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_5/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_8/Branch_2/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_2/Conv2d_1x1/biases
+InceptionResnetV2/Mixed_6a/Branch_1/Conv2d_1a_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_18/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_7/Branch_2/Conv2d_0b_3x3/weights
+InceptionResnetV2/Repeat_1/block17_11/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_2/block8_3/Branch_1/Conv2d_0c_3x1/weights
+InceptionResnetV2/Repeat/block35_3/Branch_2/Conv2d_0c_3x3/weights
+InceptionResnetV2/Repeat_2/block8_9/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_14/Conv2d_1x1/biases
+InceptionResnetV2/Repeat/block35_2/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_17/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_10/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Mixed_6a/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_7/Branch_1/Conv2d_0b_1x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_5/Branch_2/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_4/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_15/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Mixed_7a/Branch_2/Conv2d_0b_3x3/weights
+InceptionResnetV2/Repeat/block35_7/Conv2d_1x1/biases
+InceptionResnetV2/Repeat_2/block8_5/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_10/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_7/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_7/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_1/block17_17/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_20/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Mixed_7a/Branch_0/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_2/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_8/Branch_2/Conv2d_0b_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_6/Branch_1/Conv2d_0c_3x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_7/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_2/Conv2d_1x1/biases
+InceptionResnetV2/Repeat_1/block17_15/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_5/Conv2d_1x1/weights
+InceptionResnetV2/Mixed_5b/Branch_1/Conv2d_0b_5x5/weights
+InceptionResnetV2/Repeat_2/block8_6/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_2/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Mixed_5b/Branch_3/Conv2d_0b_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_17/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_20/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_9/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat/block35_4/Branch_2/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_4/Conv2d_1x1/weights
+InceptionResnetV2/Repeat/block35_9/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_16/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_mean
+InceptionResnetV2/AuxLogits/Conv2d_2a_5x5/BatchNorm/moving_variance
+InceptionResnetV2/Mixed_7a/Branch_0/Conv2d_1a_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_2/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Block8/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_10/Branch_1/Conv2d_0b_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_8/Branch_2/Conv2d_0c_3x3/weights
+InceptionResnetV2/Repeat_2/block8_3/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_1/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_8/Branch_2/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_11/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_9/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat/block35_7/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_2/block8_7/Branch_1/Conv2d_0b_1x3/weights
+InceptionResnetV2/Repeat_1/block17_13/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_17/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_1/block17_5/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_2/block8_4/Branch_1/Conv2d_0b_1x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_10/Branch_2/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat/block35_9/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_5/Branch_1/Conv2d_0b_1x3/BatchNorm/moving_variance
+InceptionResnetV2/Mixed_5b/Branch_2/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_9/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_14/Branch_1/Conv2d_0c_7x1/BatchNorm/beta
+InceptionResnetV2/Block8/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_19/Branch_1/Conv2d_0c_7x1/weights
+InceptionResnetV2/Repeat_2/block8_7/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_5/Conv2d_1x1/biases
+InceptionResnetV2/Repeat/block35_10/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_4/Branch_1/Conv2d_0c_7x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_6/Branch_2/Conv2d_0b_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_1/Conv2d_1x1/biases
+InceptionResnetV2/Repeat_1/block17_10/Conv2d_1x1/weights
+InceptionResnetV2/Mixed_5b/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_13/Branch_1/Conv2d_0c_7x1/weights
+InceptionResnetV2/Repeat_1/block17_17/Branch_1/Conv2d_0b_1x7/weights
+InceptionResnetV2/Repeat_1/block17_1/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_1/Branch_1/Conv2d_0b_1x3/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_3/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_8/Branch_2/Conv2d_0c_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Block8/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_12/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_2/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_4/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_9/Branch_2/Conv2d_0b_3x3/weights
+InceptionResnetV2/Repeat/block35_2/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_3/Conv2d_1x1/biases
+InceptionResnetV2/Block8/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_16/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Mixed_7a/Branch_2/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_2/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_7/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_2/Branch_2/Conv2d_0b_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_5/Branch_1/Conv2d_0c_3x1/weights
+InceptionResnetV2/Repeat/block35_10/Branch_2/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_6/Branch_2/Conv2d_0b_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_10/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_3/Branch_2/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Conv2d_2b_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_8/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_2/Branch_1/Conv2d_0b_1x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_10/Branch_2/Conv2d_0c_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_12/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat/block35_6/Branch_2/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Conv2d_3b_1x1/weights
+InceptionResnetV2/Repeat_1/block17_8/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_9/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Conv2d_7b_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_5/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_5/Branch_1/Conv2d_0c_3x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_3/Branch_1/Conv2d_0b_1x3/weights
+InceptionResnetV2/Repeat/block35_1/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_9/Branch_1/Conv2d_0b_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Mixed_7a/Branch_2/Conv2d_1a_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_13/Conv2d_1x1/biases
+InceptionResnetV2/Repeat/block35_8/Branch_1/Conv2d_0b_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_4/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Block8/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_4/Branch_2/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_3/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Mixed_6a/Branch_1/Conv2d_0b_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_5/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Mixed_6a/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_1/block17_4/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Block8/Branch_1/Conv2d_0c_3x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_3/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Conv2d_2a_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_2/Branch_1/Conv2d_0c_7x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_1/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_9/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_2/block8_3/Conv2d_1x1/biases
+InceptionResnetV2/Repeat/block35_6/Conv2d_1x1/weights
+InceptionResnetV2/Repeat/block35_3/Branch_1/Conv2d_0b_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_2/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_variance
+InceptionResnetV2/Conv2d_2b_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Mixed_5b/Branch_2/Conv2d_0b_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_6/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_1/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_9/Branch_1/Conv2d_0b_1x7/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_7/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_6/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_2/Branch_2/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_7/Branch_2/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_19/Branch_1/Conv2d_0c_7x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_7/Branch_1/Conv2d_0b_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_4/Branch_2/Conv2d_0c_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_1/Branch_1/Conv2d_0b_1x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_3/Conv2d_1x1/biases
+InceptionResnetV2/Repeat_1/block17_6/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_3/Branch_2/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_13/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_18/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_18/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_18/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_16/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_6/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_7/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_7/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_2/block8_1/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat/block35_2/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_19/Branch_1/Conv2d_0b_1x7/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_17/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_1/Branch_1/Conv2d_0c_3x1/BatchNorm/beta
+InceptionResnetV2/Mixed_6a/Branch_0/Conv2d_1a_3x3/BatchNorm/beta
+InceptionResnetV2/Conv2d_3b_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_6/Branch_1/Conv2d_0c_7x1/weights
+InceptionResnetV2/Repeat_1/block17_9/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_3/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_18/Branch_1/Conv2d_0b_1x7/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_2/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_1/Branch_2/Conv2d_0c_3x3/weights
+InceptionResnetV2/Repeat/block35_2/Branch_2/Conv2d_0c_3x3/weights
+InceptionResnetV2/Repeat_1/block17_10/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_3/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Block8/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_16/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_1/Branch_2/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Conv2d_1a_3x3/weights
+InceptionResnetV2/Repeat_2/block8_3/Conv2d_1x1/weights
+InceptionResnetV2/Repeat/block35_5/Branch_1/Conv2d_0b_3x3/weights
+InceptionResnetV2/Repeat/block35_2/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_13/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_4/Branch_1/Conv2d_0b_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_8/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_4/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_9/Conv2d_1x1/biases
+InceptionResnetV2/Repeat_2/block8_4/Conv2d_1x1/biases
+InceptionResnetV2/Repeat/block35_10/Branch_1/Conv2d_0b_3x3/weights
+InceptionResnetV2/Repeat/block35_1/Branch_2/Conv2d_0b_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_9/Branch_2/Conv2d_0b_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_20/Branch_1/Conv2d_0c_7x1/weights
+InceptionResnetV2/Mixed_6a/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_1/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_variance
+InceptionResnetV2/Mixed_5b/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_15/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_15/Branch_1/Conv2d_0c_7x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_1/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_8/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_3/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_1/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_4/Branch_2/Conv2d_0c_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_1/Branch_1/Conv2d_0b_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_7/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_9/Branch_1/Conv2d_0b_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_10/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_16/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat/block35_10/Branch_1/Conv2d_0b_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_7/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_5/Branch_2/Conv2d_0c_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_8/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_2/block8_4/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_9/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_2/Conv2d_1x1/biases
+InceptionResnetV2/Repeat_1/block17_6/Branch_1/Conv2d_0c_7x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_10/Branch_1/Conv2d_0b_1x7/weights
+InceptionResnetV2/Repeat_1/block17_12/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_2/block8_8/Branch_1/Conv2d_0c_3x1/weights
+InceptionResnetV2/Repeat/block35_4/Branch_2/Conv2d_0a_1x1/weights
+InceptionResnetV2/Block8/Branch_1/Conv2d_0c_3x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_10/Branch_1/Conv2d_0c_7x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_8/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Mixed_7a/Branch_2/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_1/block17_8/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Mixed_5b/Branch_2/Conv2d_0b_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_8/Branch_2/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_16/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_6/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_2/block8_9/Branch_1/Conv2d_0c_3x1/weights
+InceptionResnetV2/Repeat/block35_6/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_11/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_variance
+InceptionResnetV2/Mixed_5b/Branch_2/Conv2d_0c_3x3/weights
+InceptionResnetV2/Mixed_7a/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Conv2d_2b_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_2/Branch_2/Conv2d_0c_3x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_9/Branch_1/Conv2d_0b_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_15/Conv2d_1x1/weights
+InceptionResnetV2/Block8/Branch_1/Conv2d_0b_1x3/BatchNorm/beta
+InceptionResnetV2/Repeat_2/block8_6/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_8/Branch_1/Conv2d_0c_3x1/BatchNorm/beta
+InceptionResnetV2/Conv2d_1a_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_7/Conv2d_1x1/biases
+InceptionResnetV2/Repeat/block35_2/Branch_2/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_2/block8_6/Branch_1/Conv2d_0c_3x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_5/Branch_1/Conv2d_0b_1x7/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_3/Branch_2/Conv2d_0b_3x3/weights
+InceptionResnetV2/Repeat/block35_8/Branch_2/Conv2d_0b_3x3/weights
+InceptionResnetV2/Repeat_1/block17_11/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_2/block8_5/Branch_1/Conv2d_0b_1x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_7/Branch_1/Conv2d_0b_1x3/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_1/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_16/Conv2d_1x1/biases
+InceptionResnetV2/Repeat_2/block8_4/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_1/block17_12/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_6/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Mixed_5b/Branch_1/Conv2d_0b_5x5/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_16/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_1/Branch_2/Conv2d_0b_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_7/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_8/Branch_1/Conv2d_0c_7x1/BatchNorm/beta
+InceptionResnetV2/Mixed_5b/Branch_2/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_3/Conv2d_1x1/weights
+InceptionResnetV2/Repeat/block35_6/Branch_1/Conv2d_0b_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_20/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_3/Branch_1/Conv2d_0b_1x7/BatchNorm/beta
+InceptionResnetV2/Mixed_5b/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_10/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_6/Branch_0/Conv2d_1x1/BatchNorm/beta
+InceptionResnetV2/AuxLogits/Conv2d_2a_5x5/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_10/Branch_0/Conv2d_1x1/weights
+InceptionResnetV2/Mixed_6a/Branch_1/Conv2d_0b_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_14/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_13/Branch_1/Conv2d_0c_7x1/BatchNorm/moving_mean
+global_step
+InceptionResnetV2/Repeat_1/block17_6/Branch_1/Conv2d_0b_1x7/weights
+InceptionResnetV2/Repeat_1/block17_13/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Block8/Branch_1/Conv2d_0b_1x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_5/Branch_1/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat_1/block17_7/Branch_1/Conv2d_0c_7x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_7/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat_2/block8_1/Branch_0/Conv2d_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_7/Branch_1/Conv2d_0b_3x3/weights
+InceptionResnetV2/Repeat_1/block17_20/Branch_1/Conv2d_0c_7x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_6/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+InceptionResnetV2/Repeat/block35_1/Branch_2/Conv2d_0c_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_2/Branch_1/Conv2d_0b_1x3/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_5/Branch_2/Conv2d_0b_3x3/weights
+InceptionResnetV2/Block8/Branch_1/Conv2d_0c_3x1/weights
+InceptionResnetV2/AuxLogits/Conv2d_1b_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_18/Branch_1/Conv2d_0b_1x7/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_4/Branch_2/Conv2d_0b_3x3/weights
+InceptionResnetV2/Mixed_5b/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_5/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat/block35_9/Branch_2/Conv2d_0c_3x3/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_8/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_13/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_4/Branch_1/Conv2d_0c_3x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_1/block17_7/Conv2d_1x1/biases
+InceptionResnetV2/Repeat_1/block17_9/Branch_1/Conv2d_0c_7x1/weights
+InceptionResnetV2/Repeat/block35_5/Branch_2/Conv2d_0a_1x1/weights
+InceptionResnetV2/Repeat/block35_1/Branch_2/Conv2d_0b_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_19/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Repeat_2/block8_7/Conv2d_1x1/weights
+InceptionResnetV2/Repeat_1/block17_17/Branch_0/Conv2d_1x1/BatchNorm/moving_variance
+InceptionResnetV2/Conv2d_4a_3x3/weights
+InceptionResnetV2/Repeat/block35_9/Branch_2/Conv2d_0b_3x3/BatchNorm/beta
+InceptionResnetV2/Repeat/block35_6/Branch_1/Conv2d_0a_1x1/BatchNorm/beta
+InceptionResnetV2/Repeat_1/block17_6/Branch_1/Conv2d_0a_1x1/BatchNorm/moving_mean
+Variables restored: InceptionResnetV2/Conv2d_1a_3x3/weights:0
+Variables restored: InceptionResnetV2/Conv2d_2a_3x3/weights:0
+Variables restored: InceptionResnetV2/Conv2d_2b_3x3/weights:0
+Variables restored: InceptionResnetV2/Conv2d_3b_1x1/weights:0
+Variables restored: InceptionResnetV2/Conv2d_4a_3x3/weights:0
+Variables restored: InceptionResnetV2/Mixed_5b/Branch_0/Conv2d_1x1/weights:0
+Variables restored: InceptionResnetV2/Mixed_5b/Branch_1/Conv2d_0a_1x1/weights:0
+Variables restored: InceptionResnetV2/Mixed_5b/Branch_1/Conv2d_0b_5x5/weights:0
+Variables restored: InceptionResnetV2/Mixed_5b/Branch_2/Conv2d_0a_1x1/weights:0
+Variables restored: InceptionResnetV2/Mixed_5b/Branch_2/Conv2d_0b_3x3/weights:0
+Variables restored: InceptionResnetV2/Mixed_5b/Branch_2/Conv2d_0c_3x3/weights:0
+Variables restored: InceptionResnetV2/Mixed_5b/Branch_3/Conv2d_0b_1x1/weights:0
+Variables restored: InceptionResnetV2/Mixed_6a/Branch_0/Conv2d_1a_3x3/weights:0
+Variables restored: InceptionResnetV2/Mixed_6a/Branch_1/Conv2d_0a_1x1/weights:0
+Variables restored: InceptionResnetV2/Mixed_6a/Branch_1/Conv2d_0b_3x3/weights:0
+Variables restored: InceptionResnetV2/Mixed_6a/Branch_1/Conv2d_1a_3x3/weights:0
+Variables restored: InceptionResnetV2/Mixed_7a/Branch_0/Conv2d_0a_1x1/weights:0
+Variables restored: InceptionResnetV2/Mixed_7a/Branch_0/Conv2d_1a_3x3/weights:0
+Variables restored: InceptionResnetV2/Mixed_7a/Branch_1/Conv2d_0a_1x1/weights:0
+Variables restored: InceptionResnetV2/Mixed_7a/Branch_1/Conv2d_1a_3x3/weights:0
+Variables restored: InceptionResnetV2/Mixed_7a/Branch_2/Conv2d_0a_1x1/weights:0
+Variables restored: InceptionResnetV2/Mixed_7a/Branch_2/Conv2d_0b_3x3/weights:0
+Variables restored: InceptionResnetV2/Mixed_7a/Branch_2/Conv2d_1a_3x3/weights:0
+Loaded.
+Fix Inception Resnet V2 layers..
+Fixed.
+2018-03-22 10:32:34.141882: W tensorflow/core/framework/op_kernel.cc:1190] Invalid argument: exceptions.ValueError: operands could not be broadcast together with shapes (3519,1) (17100,1) 
+2018-03-22 10:32:34.143143: W tensorflow/core/framework/op_kernel.cc:1190] Invalid argument: exceptions.ValueError: cannot reshape array of size 17100 into shape (1,17,23,9)
+Traceback (most recent call last):
+  File "./tools/trainval_net.py", line 142, in <module>
+    max_iters=args.max_iters)
+  File "/media/ad/DATA/aicitychallenge/tf-faster-rcnn/tools/../lib/model/train_val.py", line 381, in train_net
+    sw.train_model(sess, max_iters)
+  File "/media/ad/DATA/aicitychallenge/tf-faster-rcnn/tools/../lib/model/train_val.py", line 288, in train_model
+    self.net.train_step_with_summary(sess, blobs, train_op)
+  File "/media/ad/DATA/aicitychallenge/tf-faster-rcnn/tools/../lib/nets/network.py", line 478, in train_step_with_summary
+    feed_dict=feed_dict)
+  File "/home/ad/tensorflow-r1.6/local/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 905, in run
+    run_metadata_ptr)
+  File "/home/ad/tensorflow-r1.6/local/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1137, in _run
+    feed_dict_tensor, options, run_metadata)
+  File "/home/ad/tensorflow-r1.6/local/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1355, in _do_run
+    options, run_metadata)
+  File "/home/ad/tensorflow-r1.6/local/lib/python2.7/site-packages/tensorflow/python/client/session.py", line 1374, in _do_call
+    raise type(e)(node_def, op, message)
+tensorflow.python.framework.errors_impl.InvalidArgumentError: exceptions.ValueError: operands could not be broadcast together with shapes (3519,1) (17100,1) 
+	 [[Node: InceptionResnetV2_1/rois/proposal = PyFunc[Tin=[DT_FLOAT, DT_FLOAT, DT_FLOAT, DT_STRING, DT_INT32, DT_FLOAT, DT_INT32], Tout=[DT_FLOAT, DT_FLOAT], token="pyfunc_1", _device="/job:localhost/replica:0/task:0/device:CPU:0"](InceptionResnetV2_1/rpn_cls_prob/transpose_1/_1109, InceptionResnetV2_1/rpn_bbox_pred/BiasAdd/_1049, _arg_Placeholder_1_0_1, InceptionResnetV2_1/rois/proposal/input_3, InceptionResnetV2_1/rois/proposal/input_4, InceptionResnetV2_1/ANCHOR_default/generate_anchors, InceptionResnetV2_1/rois/proposal/input_6)]]
+	 [[Node: InceptionResnetV2_1/rpn_rois/proposal_target/_1117 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_5950_InceptionResnetV2_1/rpn_rois/proposal_target", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:0"]()]]
+
+Caused by op u'InceptionResnetV2_1/rois/proposal', defined at:
+  File "./tools/trainval_net.py", line 142, in <module>
+    max_iters=args.max_iters)
+  File "/media/ad/DATA/aicitychallenge/tf-faster-rcnn/tools/../lib/model/train_val.py", line 381, in train_net
+    sw.train_model(sess, max_iters)
+  File "/media/ad/DATA/aicitychallenge/tf-faster-rcnn/tools/../lib/model/train_val.py", line 252, in train_model
+    lr, train_op = self.construct_graph(sess)
+  File "/media/ad/DATA/aicitychallenge/tf-faster-rcnn/tools/../lib/model/train_val.py", line 123, in construct_graph
+    anchor_ratios=cfg.ANCHOR_RATIOS)
+  File "/media/ad/DATA/aicitychallenge/tf-faster-rcnn/tools/../lib/nets/network.py", line 389, in create_architecture
+    rois, cls_prob, bbox_pred = self._build_network(training)
+  File "/media/ad/DATA/aicitychallenge/tf-faster-rcnn/tools/../lib/nets/network.py", line 215, in _build_network
+    rois = self._region_proposal(net_conv, is_training, initializer)
+  File "/media/ad/DATA/aicitychallenge/tf-faster-rcnn/tools/../lib/nets/network.py", line 307, in _region_proposal
+    rois, roi_scores = self._proposal_layer(rpn_cls_prob, rpn_bbox_pred, "rois")
+  File "/media/ad/DATA/aicitychallenge/tf-faster-rcnn/tools/../lib/nets/network.py", line 104, in _proposal_layer
+    [tf.float32, tf.float32], name="proposal")
+  File "/home/ad/tensorflow-r1.6/local/lib/python2.7/site-packages/tensorflow/python/ops/script_ops.py", line 317, in py_func
+    func=func, inp=inp, Tout=Tout, stateful=stateful, eager=False, name=name)
+  File "/home/ad/tensorflow-r1.6/local/lib/python2.7/site-packages/tensorflow/python/ops/script_ops.py", line 225, in _internal_py_func
+    input=inp, token=token, Tout=Tout, name=name)
+  File "/home/ad/tensorflow-r1.6/local/lib/python2.7/site-packages/tensorflow/python/ops/gen_script_ops.py", line 93, in _py_func
+    "PyFunc", input=input, token=token, Tout=Tout, name=name)
+  File "/home/ad/tensorflow-r1.6/local/lib/python2.7/site-packages/tensorflow/python/framework/op_def_library.py", line 787, in _apply_op_helper
+    op_def=op_def)
+  File "/home/ad/tensorflow-r1.6/local/lib/python2.7/site-packages/tensorflow/python/framework/ops.py", line 3271, in create_op
+    op_def=op_def)
+  File "/home/ad/tensorflow-r1.6/local/lib/python2.7/site-packages/tensorflow/python/framework/ops.py", line 1650, in __init__
+    self._traceback = self._graph._extract_stack()  # pylint: disable=protected-access
+
+InvalidArgumentError (see above for traceback): exceptions.ValueError: operands could not be broadcast together with shapes (3519,1) (17100,1) 
+	 [[Node: InceptionResnetV2_1/rois/proposal = PyFunc[Tin=[DT_FLOAT, DT_FLOAT, DT_FLOAT, DT_STRING, DT_INT32, DT_FLOAT, DT_INT32], Tout=[DT_FLOAT, DT_FLOAT], token="pyfunc_1", _device="/job:localhost/replica:0/task:0/device:CPU:0"](InceptionResnetV2_1/rpn_cls_prob/transpose_1/_1109, InceptionResnetV2_1/rpn_bbox_pred/BiasAdd/_1049, _arg_Placeholder_1_0_1, InceptionResnetV2_1/rois/proposal/input_3, InceptionResnetV2_1/rois/proposal/input_4, InceptionResnetV2_1/ANCHOR_default/generate_anchors, InceptionResnetV2_1/rois/proposal/input_6)]]
+	 [[Node: InceptionResnetV2_1/rpn_rois/proposal_target/_1117 = _Recv[client_terminated=false, recv_device="/job:localhost/replica:0/task:0/device:GPU:0", send_device="/job:localhost/replica:0/task:0/device:CPU:0", send_device_incarnation=1, tensor_name="edge_5950_InceptionResnetV2_1/rpn_rois/proposal_target", tensor_type=DT_FLOAT, _device="/job:localhost/replica:0/task:0/device:GPU:0"]()]]
+
+Command exited with non-zero status 1
+19.51user 2.62system 0:20.64elapsed 107%CPU (0avgtext+0avgdata 2378132maxresident)k
+0inputs+0outputs (0major+654147minor)pagefaults 0swaps

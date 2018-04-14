@@ -1,0 +1,18 @@
++ echo Logging output to experiments/logs/res101_car_track1_train__res101.txt.2018-03-23_09-39-49
+Logging output to experiments/logs/res101_car_track1_train__res101.txt.2018-03-23_09-39-49
++ set +x
++ '[' '!' -f output/res101/car_track1_train/default/res101_faster_rcnn_iter_10000.ckpt.index ']'
++ [[ ! -z '' ]]
++ CUDA_VISIBLE_DEVICES=0
++ time python ./tools/trainval_net.py --weight data/imagenet_weights/res101.ckpt --imdb car_track1_train --imdbval car_track1_test --iters 10000 --cfg experiments/cfgs/res101.yml --net res101 --set ANCHOR_SCALES '[4,8,16,32]' ANCHOR_RATIOS '[0.5,1,2]' TRAIN.STEPSIZE '[1000]'
+Traceback (most recent call last):
+  File "./tools/trainval_net.py", line 11, in <module>
+    from model.train_val import get_training_roidb, train_net
+  File "/media/ad/DATA/aicitychallenge/tf-faster-rcnn/tools/../lib/model/__init__.py", line 1, in <module>
+    from . import config
+  File "/media/ad/DATA/aicitychallenge/tf-faster-rcnn/tools/../lib/model/config.py", line 9, in <module>
+    from easydict import EasyDict as edict
+ImportError: No module named easydict
+Command exited with non-zero status 1
+0.11user 0.06system 0:00.72elapsed 25%CPU (0avgtext+0avgdata 20200maxresident)k
+22072inputs+0outputs (56major+3840minor)pagefaults 0swaps

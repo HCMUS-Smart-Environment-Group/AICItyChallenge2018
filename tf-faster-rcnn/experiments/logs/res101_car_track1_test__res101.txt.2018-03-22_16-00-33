@@ -1,0 +1,468 @@
++ echo Logging output to experiments/logs/res101_car_track1_test__res101.txt.2018-03-22_16-00-33
+Logging output to experiments/logs/res101_car_track1_test__res101.txt.2018-03-22_16-00-33
++ set +x
++ '[' '!' -f output/res101/car_track1_test/default/res101_faster_rcnn_iter_3000.ckpt.index ']'
++ [[ ! -z '' ]]
++ CUDA_VISIBLE_DEVICES=0
++ time python ./tools/trainval_net.py --weight data/imagenet_weights/res101.ckpt --imdb car_track1_test --imdbval car_track1_train --iters 3000 --cfg experiments/cfgs/res101.yml --net res101 --set ANCHOR_SCALES '[4,8,16,32]' ANCHOR_RATIOS '[0.5,1,2]' TRAIN.STEPSIZE '[1000]'
+Called with args:
+Namespace(cfg_file='experiments/cfgs/res101.yml', imdb_name='car_track1_test', imdbval_name='car_track1_train', max_iters=3000, net='res101', set_cfgs=['ANCHOR_SCALES', '[4,8,16,32]', 'ANCHOR_RATIOS', '[0.5,1,2]', 'TRAIN.STEPSIZE', '[1000]'], tag=None, weight='data/imagenet_weights/res101.ckpt')
+Using config:
+{'ANCHOR_RATIOS': [0.5, 1, 2],
+ 'ANCHOR_SCALES': [4, 8, 16, 32],
+ 'DATA_DIR': '/media/ad/DATA/aicitychallenge/tf-faster-rcnn/data',
+ 'EXP_DIR': 'res101',
+ 'MATLAB': 'matlab',
+ 'MOBILENET': {'DEPTH_MULTIPLIER': 1.0,
+               'FIXED_LAYERS': 5,
+               'REGU_DEPTH': False,
+               'WEIGHT_DECAY': 4e-05},
+ 'PIXEL_MEANS': array([[[102.9801, 115.9465, 122.7717]]]),
+ 'POOLING_MODE': 'crop',
+ 'POOLING_SIZE': 7,
+ 'RESNET': {'FIXED_BLOCKS': 1, 'MAX_POOL': False},
+ 'RNG_SEED': 3,
+ 'ROOT_DIR': '/media/ad/DATA/aicitychallenge/tf-faster-rcnn',
+ 'RPN_CHANNELS': 512,
+ 'TEST': {'BBOX_REG': True,
+          'HAS_RPN': True,
+          'MAX_SIZE': 1000,
+          'MODE': 'nms',
+          'NMS': 0.3,
+          'PROPOSAL_METHOD': 'gt',
+          'RPN_NMS_THRESH': 0.7,
+          'RPN_POST_NMS_TOP_N': 300,
+          'RPN_PRE_NMS_TOP_N': 6000,
+          'RPN_TOP_N': 5000,
+          'SCALES': [600],
+          'SVM': False},
+ 'TRAIN': {'ASPECT_GROUPING': False,
+           'BATCH_SIZE': 256,
+           'BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'BBOX_NORMALIZE_MEANS': [0.0, 0.0, 0.0, 0.0],
+           'BBOX_NORMALIZE_STDS': [0.1, 0.1, 0.2, 0.2],
+           'BBOX_NORMALIZE_TARGETS': True,
+           'BBOX_NORMALIZE_TARGETS_PRECOMPUTED': True,
+           'BBOX_REG': True,
+           'BBOX_THRESH': 0.5,
+           'BG_THRESH_HI': 0.5,
+           'BG_THRESH_LO': 0.0,
+           'BIAS_DECAY': False,
+           'DISPLAY': 20,
+           'DOUBLE_BIAS': False,
+           'FG_FRACTION': 0.25,
+           'FG_THRESH': 0.5,
+           'GAMMA': 0.1,
+           'HAS_RPN': True,
+           'IMS_PER_BATCH': 1,
+           'LEARNING_RATE': 0.001,
+           'MAX_SIZE': 1000,
+           'MOMENTUM': 0.9,
+           'PROPOSAL_METHOD': 'gt',
+           'RPN_BATCHSIZE': 256,
+           'RPN_BBOX_INSIDE_WEIGHTS': [1.0, 1.0, 1.0, 1.0],
+           'RPN_CLOBBER_POSITIVES': False,
+           'RPN_FG_FRACTION': 0.5,
+           'RPN_NEGATIVE_OVERLAP': 0.3,
+           'RPN_NMS_THRESH': 0.7,
+           'RPN_POSITIVE_OVERLAP': 0.7,
+           'RPN_POSITIVE_WEIGHT': -1.0,
+           'RPN_POST_NMS_TOP_N': 2000,
+           'RPN_PRE_NMS_TOP_N': 12000,
+           'SCALES': [600],
+           'SNAPSHOT_ITERS': 5000,
+           'SNAPSHOT_KEPT': 3,
+           'SNAPSHOT_PREFIX': 'res101_faster_rcnn',
+           'STEPSIZE': [1000],
+           'SUMMARY_INTERVAL': 180,
+           'TRUNCATED': False,
+           'USE_ALL_GT': True,
+           'USE_FLIPPED': True,
+           'USE_GT': False,
+           'WEIGHT_DECAY': 0.0001},
+ 'USE_GPU_NMS': True}
+Loaded dataset `car_track1_test` for training
+Set proposal method: gt
+Appending horizontally-flipped training examples...
+car_track1_test gt roidb loaded from /media/ad/DATA/aicitychallenge/tf-faster-rcnn/data/cache/car_track1_test_gt_roidb.pkl
+done
+Preparing training data...
+done
+276 roidb entries
+Output will be saved to `/media/ad/DATA/aicitychallenge/tf-faster-rcnn/output/res101/car_track1_test/default`
+TensorFlow summaries will be saved to `/media/ad/DATA/aicitychallenge/tf-faster-rcnn/tensorboard/res101/car_track1_test/default`
+Loaded dataset `car_track1_train` for training
+Set proposal method: gt
+Preparing training data...
+car_track1_train gt roidb loaded from /media/ad/DATA/aicitychallenge/tf-faster-rcnn/data/cache/car_track1_train_gt_roidb.pkl
+done
+777 validation roidb entries
+Filtered 0 roidb entries: 276 -> 276
+Filtered 0 roidb entries: 777 -> 777
+2018-03-22 16:00:34.576129: I tensorflow/core/platform/cpu_feature_guard.cc:140] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
+2018-03-22 16:00:34.678497: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:898] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2018-03-22 16:00:34.678730: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1212] Found device 0 with properties: 
+name: GeForce GTX 1080 Ti major: 6 minor: 1 memoryClockRate(GHz): 1.6575
+pciBusID: 0000:01:00.0
+totalMemory: 10.91GiB freeMemory: 10.39GiB
+2018-03-22 16:00:34.678742: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1312] Adding visible gpu devices: 0
+2018-03-22 16:00:34.827121: I tensorflow/core/common_runtime/gpu/gpu_device.cc:993] Creating TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 10052 MB memory) -> physical GPU (device: 0, name: GeForce GTX 1080 Ti, pci bus id: 0000:01:00.0, compute capability: 6.1)
+Solving...
+/home/ad/tensorflow-r1.6/local/lib/python2.7/site-packages/tensorflow/python/ops/gradients_impl.py:98: UserWarning: Converting sparse IndexedSlices to a dense Tensor of unknown shape. This may consume a large amount of memory.
+  "Converting sparse IndexedSlices to a dense Tensor of unknown shape. "
+Restoring model snapshots from /media/ad/DATA/aicitychallenge/tf-faster-rcnn/output/res101/car_track1_test/default/res101_faster_rcnn_iter_2000.ckpt
+Restored.
+iter: 2020 / 3000, total loss: 0.566336
+ >>> rpn_loss_cls: 0.006527
+ >>> rpn_loss_box: 0.004684
+ >>> loss_cls: 0.091346
+ >>> loss_box: 0.081672
+ >>> lr: 0.000100
+speed: 0.364s / iter
+iter: 2040 / 3000, total loss: 0.541623
+ >>> rpn_loss_cls: 0.012075
+ >>> rpn_loss_box: 0.002682
+ >>> loss_cls: 0.069547
+ >>> loss_box: 0.075213
+ >>> lr: 0.000100
+speed: 0.325s / iter
+iter: 2060 / 3000, total loss: 0.642905
+ >>> rpn_loss_cls: 0.008320
+ >>> rpn_loss_box: 0.009802
+ >>> loss_cls: 0.127759
+ >>> loss_box: 0.114920
+ >>> lr: 0.000100
+speed: 0.312s / iter
+iter: 2080 / 3000, total loss: 0.575170
+ >>> rpn_loss_cls: 0.004586
+ >>> rpn_loss_box: 0.005045
+ >>> loss_cls: 0.090287
+ >>> loss_box: 0.093150
+ >>> lr: 0.000100
+speed: 0.305s / iter
+iter: 2100 / 3000, total loss: 0.576879
+ >>> rpn_loss_cls: 0.001310
+ >>> rpn_loss_box: 0.004913
+ >>> loss_cls: 0.076642
+ >>> loss_box: 0.111913
+ >>> lr: 0.000100
+speed: 0.301s / iter
+iter: 2120 / 3000, total loss: 0.543935
+ >>> rpn_loss_cls: 0.031346
+ >>> rpn_loss_box: 0.003505
+ >>> loss_cls: 0.050106
+ >>> loss_box: 0.076878
+ >>> lr: 0.000100
+speed: 0.298s / iter
+iter: 2140 / 3000, total loss: 0.490994
+ >>> rpn_loss_cls: 0.006954
+ >>> rpn_loss_box: 0.007065
+ >>> loss_cls: 0.040274
+ >>> loss_box: 0.054602
+ >>> lr: 0.000100
+speed: 0.297s / iter
+iter: 2160 / 3000, total loss: 0.638028
+ >>> rpn_loss_cls: 0.033735
+ >>> rpn_loss_box: 0.009626
+ >>> loss_cls: 0.092153
+ >>> loss_box: 0.120416
+ >>> lr: 0.000100
+speed: 0.295s / iter
+iter: 2180 / 3000, total loss: 0.528482
+ >>> rpn_loss_cls: 0.002965
+ >>> rpn_loss_box: 0.005999
+ >>> loss_cls: 0.047834
+ >>> loss_box: 0.089588
+ >>> lr: 0.000100
+speed: 0.295s / iter
+iter: 2200 / 3000, total loss: 0.539282
+ >>> rpn_loss_cls: 0.008386
+ >>> rpn_loss_box: 0.006495
+ >>> loss_cls: 0.047351
+ >>> loss_box: 0.094956
+ >>> lr: 0.000100
+speed: 0.294s / iter
+iter: 2220 / 3000, total loss: 0.568001
+ >>> rpn_loss_cls: 0.007124
+ >>> rpn_loss_box: 0.004033
+ >>> loss_cls: 0.077357
+ >>> loss_box: 0.097394
+ >>> lr: 0.000100
+speed: 0.293s / iter
+iter: 2240 / 3000, total loss: 0.591977
+ >>> rpn_loss_cls: 0.032570
+ >>> rpn_loss_box: 0.009495
+ >>> loss_cls: 0.066177
+ >>> loss_box: 0.101643
+ >>> lr: 0.000100
+speed: 0.292s / iter
+iter: 2260 / 3000, total loss: 0.522377
+ >>> rpn_loss_cls: 0.001545
+ >>> rpn_loss_box: 0.002474
+ >>> loss_cls: 0.041652
+ >>> loss_box: 0.094615
+ >>> lr: 0.000100
+speed: 0.292s / iter
+iter: 2280 / 3000, total loss: 0.530937
+ >>> rpn_loss_cls: 0.011628
+ >>> rpn_loss_box: 0.006891
+ >>> loss_cls: 0.055315
+ >>> loss_box: 0.075013
+ >>> lr: 0.000100
+speed: 0.292s / iter
+iter: 2300 / 3000, total loss: 0.526188
+ >>> rpn_loss_cls: 0.010463
+ >>> rpn_loss_box: 0.004540
+ >>> loss_cls: 0.059899
+ >>> loss_box: 0.069197
+ >>> lr: 0.000100
+speed: 0.291s / iter
+iter: 2320 / 3000, total loss: 0.564603
+ >>> rpn_loss_cls: 0.015814
+ >>> rpn_loss_box: 0.006183
+ >>> loss_cls: 0.054862
+ >>> loss_box: 0.105657
+ >>> lr: 0.000100
+speed: 0.291s / iter
+iter: 2340 / 3000, total loss: 0.428723
+ >>> rpn_loss_cls: 0.000608
+ >>> rpn_loss_box: 0.000660
+ >>> loss_cls: 0.010505
+ >>> loss_box: 0.034864
+ >>> lr: 0.000100
+speed: 0.290s / iter
+iter: 2360 / 3000, total loss: 0.615717
+ >>> rpn_loss_cls: 0.002648
+ >>> rpn_loss_box: 0.004696
+ >>> loss_cls: 0.087220
+ >>> loss_box: 0.139067
+ >>> lr: 0.000100
+speed: 0.290s / iter
+iter: 2380 / 3000, total loss: 0.478740
+ >>> rpn_loss_cls: 0.003693
+ >>> rpn_loss_box: 0.002504
+ >>> loss_cls: 0.046923
+ >>> loss_box: 0.043536
+ >>> lr: 0.000100
+speed: 0.290s / iter
+iter: 2400 / 3000, total loss: 0.544635
+ >>> rpn_loss_cls: 0.002488
+ >>> rpn_loss_box: 0.003362
+ >>> loss_cls: 0.059688
+ >>> loss_box: 0.097015
+ >>> lr: 0.000100
+speed: 0.290s / iter
+iter: 2420 / 3000, total loss: 0.488168
+ >>> rpn_loss_cls: 0.003494
+ >>> rpn_loss_box: 0.005163
+ >>> loss_cls: 0.053468
+ >>> loss_box: 0.043963
+ >>> lr: 0.000100
+speed: 0.290s / iter
+iter: 2440 / 3000, total loss: 0.389583
+ >>> rpn_loss_cls: 0.000348
+ >>> rpn_loss_box: 0.000432
+ >>> loss_cls: 0.002775
+ >>> loss_box: 0.003947
+ >>> lr: 0.000100
+speed: 0.289s / iter
+iter: 2460 / 3000, total loss: 0.431911
+ >>> rpn_loss_cls: 0.000642
+ >>> rpn_loss_box: 0.001653
+ >>> loss_cls: 0.031496
+ >>> loss_box: 0.016041
+ >>> lr: 0.000100
+speed: 0.289s / iter
+iter: 2480 / 3000, total loss: 0.462575
+ >>> rpn_loss_cls: 0.001593
+ >>> rpn_loss_box: 0.002521
+ >>> loss_cls: 0.036862
+ >>> loss_box: 0.039521
+ >>> lr: 0.000100
+speed: 0.289s / iter
+iter: 2500 / 3000, total loss: 0.447946
+ >>> rpn_loss_cls: 0.001277
+ >>> rpn_loss_box: 0.001260
+ >>> loss_cls: 0.041645
+ >>> loss_box: 0.021689
+ >>> lr: 0.000100
+speed: 0.289s / iter
+iter: 2520 / 3000, total loss: 0.543777
+ >>> rpn_loss_cls: 0.004855
+ >>> rpn_loss_box: 0.007183
+ >>> loss_cls: 0.058768
+ >>> loss_box: 0.090895
+ >>> lr: 0.000100
+speed: 0.289s / iter
+iter: 2540 / 3000, total loss: 0.529992
+ >>> rpn_loss_cls: 0.001912
+ >>> rpn_loss_box: 0.004169
+ >>> loss_cls: 0.041836
+ >>> loss_box: 0.100002
+ >>> lr: 0.000100
+speed: 0.289s / iter
+iter: 2560 / 3000, total loss: 0.519497
+ >>> rpn_loss_cls: 0.010890
+ >>> rpn_loss_box: 0.003596
+ >>> loss_cls: 0.056432
+ >>> loss_box: 0.066506
+ >>> lr: 0.000100
+speed: 0.289s / iter
+iter: 2580 / 3000, total loss: 0.523422
+ >>> rpn_loss_cls: 0.001658
+ >>> rpn_loss_box: 0.003105
+ >>> loss_cls: 0.044363
+ >>> loss_box: 0.092225
+ >>> lr: 0.000100
+speed: 0.289s / iter
+iter: 2600 / 3000, total loss: 0.584768
+ >>> rpn_loss_cls: 0.003760
+ >>> rpn_loss_box: 0.006660
+ >>> loss_cls: 0.069987
+ >>> loss_box: 0.122291
+ >>> lr: 0.000100
+speed: 0.289s / iter
+iter: 2620 / 3000, total loss: 0.433998
+ >>> rpn_loss_cls: 0.001383
+ >>> rpn_loss_box: 0.001898
+ >>> loss_cls: 0.018267
+ >>> loss_box: 0.030381
+ >>> lr: 0.000100
+speed: 0.289s / iter
+iter: 2640 / 3000, total loss: 0.495618
+ >>> rpn_loss_cls: 0.003122
+ >>> rpn_loss_box: 0.003459
+ >>> loss_cls: 0.059827
+ >>> loss_box: 0.047141
+ >>> lr: 0.000100
+speed: 0.291s / iter
+iter: 2660 / 3000, total loss: 0.587835
+ >>> rpn_loss_cls: 0.007803
+ >>> rpn_loss_box: 0.003804
+ >>> loss_cls: 0.106285
+ >>> loss_box: 0.087877
+ >>> lr: 0.000100
+speed: 0.291s / iter
+iter: 2680 / 3000, total loss: 0.468566
+ >>> rpn_loss_cls: 0.003899
+ >>> rpn_loss_box: 0.002156
+ >>> loss_cls: 0.035748
+ >>> loss_box: 0.044697
+ >>> lr: 0.000100
+speed: 0.291s / iter
+iter: 2700 / 3000, total loss: 0.436202
+ >>> rpn_loss_cls: 0.002104
+ >>> rpn_loss_box: 0.000606
+ >>> loss_cls: 0.020296
+ >>> loss_box: 0.031131
+ >>> lr: 0.000100
+speed: 0.290s / iter
+iter: 2720 / 3000, total loss: 0.487215
+ >>> rpn_loss_cls: 0.004230
+ >>> rpn_loss_box: 0.003407
+ >>> loss_cls: 0.033240
+ >>> loss_box: 0.064275
+ >>> lr: 0.000100
+speed: 0.290s / iter
+iter: 2740 / 3000, total loss: 0.601968
+ >>> rpn_loss_cls: 0.004604
+ >>> rpn_loss_box: 0.003756
+ >>> loss_cls: 0.095212
+ >>> loss_box: 0.116334
+ >>> lr: 0.000100
+speed: 0.290s / iter
+iter: 2760 / 3000, total loss: 0.511833
+ >>> rpn_loss_cls: 0.012516
+ >>> rpn_loss_box: 0.003222
+ >>> loss_cls: 0.039818
+ >>> loss_box: 0.074216
+ >>> lr: 0.000100
+speed: 0.290s / iter
+iter: 2780 / 3000, total loss: 0.583016
+ >>> rpn_loss_cls: 0.025881
+ >>> rpn_loss_box: 0.005138
+ >>> loss_cls: 0.070840
+ >>> loss_box: 0.099099
+ >>> lr: 0.000100
+speed: 0.290s / iter
+iter: 2800 / 3000, total loss: 0.531490
+ >>> rpn_loss_cls: 0.004054
+ >>> rpn_loss_box: 0.006726
+ >>> loss_cls: 0.070387
+ >>> loss_box: 0.068265
+ >>> lr: 0.000100
+speed: 0.290s / iter
+iter: 2820 / 3000, total loss: 0.519095
+ >>> rpn_loss_cls: 0.004983
+ >>> rpn_loss_box: 0.005904
+ >>> loss_cls: 0.068414
+ >>> loss_box: 0.057738
+ >>> lr: 0.000100
+speed: 0.290s / iter
+iter: 2840 / 3000, total loss: 0.538210
+ >>> rpn_loss_cls: 0.022485
+ >>> rpn_loss_box: 0.004312
+ >>> loss_cls: 0.054939
+ >>> loss_box: 0.074419
+ >>> lr: 0.000100
+speed: 0.290s / iter
+iter: 2860 / 3000, total loss: 0.423969
+ >>> rpn_loss_cls: 0.000854
+ >>> rpn_loss_box: 0.001698
+ >>> loss_cls: 0.015170
+ >>> loss_box: 0.024193
+ >>> lr: 0.000100
+speed: 0.290s / iter
+iter: 2880 / 3000, total loss: 0.454416
+ >>> rpn_loss_cls: 0.002373
+ >>> rpn_loss_box: 0.001280
+ >>> loss_cls: 0.027971
+ >>> loss_box: 0.040740
+ >>> lr: 0.000100
+speed: 0.290s / iter
+iter: 2900 / 3000, total loss: 0.437269
+ >>> rpn_loss_cls: 0.000617
+ >>> rpn_loss_box: 0.001699
+ >>> loss_cls: 0.035605
+ >>> loss_box: 0.017296
+ >>> lr: 0.000100
+speed: 0.290s / iter
+iter: 2920 / 3000, total loss: 0.557258
+ >>> rpn_loss_cls: 0.005704
+ >>> rpn_loss_box: 0.002880
+ >>> loss_cls: 0.067021
+ >>> loss_box: 0.099603
+ >>> lr: 0.000100
+speed: 0.290s / iter
+iter: 2940 / 3000, total loss: 0.522520
+ >>> rpn_loss_cls: 0.004978
+ >>> rpn_loss_box: 0.006749
+ >>> loss_cls: 0.065725
+ >>> loss_box: 0.063021
+ >>> lr: 0.000100
+speed: 0.290s / iter
+iter: 2960 / 3000, total loss: 0.529898
+ >>> rpn_loss_cls: 0.004480
+ >>> rpn_loss_box: 0.004453
+ >>> loss_cls: 0.050362
+ >>> loss_box: 0.088555
+ >>> lr: 0.000100
+speed: 0.290s / iter
+iter: 2980 / 3000, total loss: 0.569401
+ >>> rpn_loss_cls: 0.003828
+ >>> rpn_loss_box: 0.006335
+ >>> loss_cls: 0.090928
+ >>> loss_box: 0.086264
+ >>> lr: 0.000100
+speed: 0.289s / iter
+iter: 3000 / 3000, total loss: 0.469247
+ >>> rpn_loss_cls: 0.001230
+ >>> rpn_loss_box: 0.002789
+ >>> loss_cls: 0.041603
+ >>> loss_box: 0.041581
+ >>> lr: 0.000100
+speed: 0.289s / iter
+Wrote snapshot to: /media/ad/DATA/aicitychallenge/tf-faster-rcnn/output/res101/car_track1_test/default/res101_faster_rcnn_iter_3000.ckpt
+done solving
+179.31user 27.93system 4:58.42elapsed 69%CPU (0avgtext+0avgdata 2827440maxresident)k
+0inputs+0outputs (0major+2333210minor)pagefaults 0swaps
