@@ -30,10 +30,9 @@ def process(output, idx, video_name):
         output.write(res)
 
 if __name__ == '__main__':
-    video_names = ["Loc1_1.mp4"]
+    video_names = ['Loc%d_%d.mp4]' % (i / 8 + 1, i % 8 + 1) for i in xrange(16)]
     video_names.sort()
     output = open('%s/track1.txt' % PATH_SUB, 'w')
-    Loc = ['Loc1', 'Loc2']
     for idx, video_name in enumerate(video_names):
         process(output, idx + 1, video_name)
 

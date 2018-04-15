@@ -89,7 +89,7 @@ def get_intersect(video_name, lines, linecolors=None, linenames=None, is_vis=Fal
             cv2.rectangle(frame, (box[0], box[1]), (box[2], box[3]), color, 3 )
             cv2.putText(frame, str(obj_id).zfill(5), (box[0], box[1]), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 255, 0), 2)
         output.write(frame)
-        
+
     video.release()
     output.release()
 
@@ -131,4 +131,4 @@ def process(video_name):
 
 if __name__ == '__main__':
     video_name = 'Loc1_1.mp4'
-    process(video_name))
+    process(video_name)

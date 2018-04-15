@@ -11,7 +11,7 @@ PATH_DATA = '../bounding_box'
 PATH_RESULT = '../reidentify'
 PATH_VID = '../video'
 PATH_SVID = '../video_reid'
-IS_VISUALIZE = True
+IS_VISUALIZE = False
 LENGTH_FRAME = 1800
 
 def overlap(anchor, other):
@@ -42,7 +42,7 @@ def process(video_name):
             cur_frame = labels[i]
             best_id = -1
             best_rate = 0.0
-            for delta in xrange(1, 10):
+            for delta in xrange(1, 3):
                 pre_index = np.where(frame_id == (idx - delta))[0]
                 for j in pre_index:
                     pre_frame = labels[j]
@@ -66,7 +66,7 @@ def process(video_name):
         res[i][2] = object_index[i]
         res[i, 3:] = labels[i, :4]
 
-    np.save(PATH_RESULT + '/' + video_name, res)
+    np.save(PATH_RESULT + '/info_' + video_name, res)
 
     if not IS_VISUALIZE:
         return
@@ -96,5 +96,7 @@ def process(video_name):
     print 'Finish Writing Video takes %f second' % duration
 
 if __name__ == '__main__':
-    video_name = 'Loc1_1.mp4'
-    process(video_name)
+    for i in xrange(1, 3):
+        for j in xrange(1, 9):
+            video_name = 'Loc%d_%d.mp4' % (i, j)
+            process(video_name)

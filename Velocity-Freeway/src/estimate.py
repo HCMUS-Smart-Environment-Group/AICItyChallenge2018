@@ -7,7 +7,7 @@ import time
 PATH_DIST = '../lines'
 PATH_VID = '../video'
 PATH_RES = '../video_estimate'
-PATH_INFO = '../result'
+PATH_INFO = '../reidentify'
 PATH_VEC = '../velocity'
 CALIBRATION_WEIGHT = 1.0
 IS_VISUALIZE = False
@@ -133,12 +133,9 @@ def process(video_name):
 
     duration = time.time() - duration
     print 'Process video %s.mp4 takes %f second' % (video_name, duration)
-    
+
     if not IS_VISUALIZE:
         return 0
-    
-    video = cv2.VideoCapture(PATH_VID + '/' + video_name + '.mp4')
-    output = cv2.VideoWriter(PATH_RES + '/' + video_name + '.mp4', cv2.VideoWriter_fourcc(*"MJPG"), 30.0, (1920, 1080))
 
     print 'Writing Video %s' % video_name
 
@@ -168,6 +165,7 @@ def process(video_name):
 
 
 if __name__ == '__main__':
-    video_name = 'Loc1_1.mp4'
-    process(video_name)
-
+    for i in xrange(1, 3):
+        for j in xrange(1, 9):
+            video_name = 'Loc%d_%d.mp4' % (i, j)
+            process(video_name)
