@@ -6,7 +6,7 @@ import time
 PATH_INFO = '../reidentify'
 PATH_VID  = '../video'
 PATH_RES  = '../video_intersect'
-PATH_LINE = 'lines'
+PATH_LINE = '../lines'
 
 def function(point, line):
     return (line[0][0] - line[1][0]) * (line[0][1] - point[1]) - (line[0][1] - line[1][1]) * (line[0][0] - point[0])

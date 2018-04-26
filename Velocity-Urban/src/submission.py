@@ -26,18 +26,17 @@ def process(output, idx, video_name):
         xmax = int(data[i, 5])
         ymax = int(data[i, 6])
         v = float(velocity[i])
-        assert velocity[i] != np.inf
-        #if velocity[i] == np.inf:
-        #    continue
-        #if velocity[i] > 80 or velocity[i] == 0:
-        #    continue
-        assert 0 <= v and v <= 65
         res = LINE_SUB % (idx, frame_id, obj_id, xmin, ymin, xmax, ymax, abs(v), conf)
         output.write(res)
 
 if __name__ == '__main__':
-    video_name = 'Loc1_1.mp4'
-    process(video_name)
+    video_names = os.listdir(PATH_VID)
+    for video_name in video_names:
+        if video_name[:4] == 'Loc3':
+            process(video_name)
+        elif video_name[:4] == 'Loc4':
+            process(video_name)
+
 
 
 
