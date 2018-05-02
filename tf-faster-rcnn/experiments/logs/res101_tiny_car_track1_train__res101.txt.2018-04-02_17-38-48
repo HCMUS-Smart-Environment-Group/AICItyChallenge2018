@@ -1,4 +1,0 @@
-+ echo Logging output to experiments/logs/res101_tiny_car_track1_train__res101.txt.2018-04-02_17-38-48
-Logging output to experiments/logs/res101_tiny_car_track1_train__res101.txt.2018-04-02_17-38-48
-+ set +x
-+ '[' '!' -f output/res101/tiny_car_track1_train/default/res101_faster_rcnn_iter_2000.ckpt.index ']'
